@@ -39,7 +39,8 @@ public class PaletteActivity extends AppCompatActivity {
                 }
                 //layout.setBackgroundColor(Color.parseColor(color_list[position]));
                 //view.setBackgroundColor(Color.WHITE);
-                }
+
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 spinner.setBackgroundColor(Color.WHITE);
