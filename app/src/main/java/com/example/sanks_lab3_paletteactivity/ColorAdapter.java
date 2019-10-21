@@ -8,8 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class ColorAdapter extends BaseAdapter {
-    Context c;
-    String color_list[];
+    private Context c;
+    private String[] color_list;
+    private String[] color_list_change;
+
 
     @Override
     public int getCount() {
@@ -27,13 +29,20 @@ public class ColorAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView t = new TextView(c);
-        t.setText(color_list[position]);
-        t.setBackgroundColor(Color.parseColor(color_list[position]));
+
+        String colorsEng = color_list[position];
+        String colorText = color_list_change[position];
+
+        t.setText(colorText);
+
+        t.setBackgroundColor(Color.parseColor(colorsEng));
         return t;
     }
 
-    public ColorAdapter(Context c, String[] color_list) {
+    public ColorAdapter(Context c, String[] color_list,String[] color_list_change ) {
         this.c = c;
         this.color_list = color_list;
+        this.color_list_change = color_list_change;
+
     }
 }

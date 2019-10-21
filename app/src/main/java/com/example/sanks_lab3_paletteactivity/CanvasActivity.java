@@ -11,8 +11,7 @@ import android.widget.TextView;
 public class CanvasActivity extends AppCompatActivity {
 
     ConstraintLayout canvas;
-    String[] color_list = {"Red", "Blue", "Green", "Black", "Cyan", "Yellow", "White", "Magenta",
-            "Gray"};
+    String[] color_list ={"White","Red", "Blue", "Green", "Black", "Cyan", "Yellow", "Magenta","Gray"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +19,7 @@ public class CanvasActivity extends AppCompatActivity {
         canvas = findViewById(R.id.canvas);
         Intent intent = getIntent();
         int position = intent.getIntExtra(PaletteActivity.EXTRA_NUMBER,0);
-        canvas.setBackgroundColor(Color.parseColor(color_list[position-1]));
+        canvas.setBackgroundColor(Color.parseColor(color_list[position]));
         //System.out.println(position+"<- val"+color_list[position]);
     }
 }

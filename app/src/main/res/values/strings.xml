@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">Sanks_lab3_PaletteActivity</string>
+    <string name ="app_name">Palette activity</string>
+
+    <string-array
+        name="color">
+        <item>White</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Black</item>
+        <item>Cyan</item>
+        <item>Yellow</item>
+        <item>Magenta</item>
+        <item>Gray</item>
+
+
+    </string-array>
+    <string-array
+        name="color_change">
+        <item>White</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Black</item>
+        <item>Cyan</item>
+        <item>Yellow</item>
+        <item>Magenta</item>
+        <item>Gray</item>
+
+
+    </string-array>
 </resources>
