@@ -22,11 +22,10 @@ import java.net.InterfaceAddress;
  */
 public class palette_fragment extends Fragment {
 
+    // interface obj
+    private palette_listener listener;
 
-
-
-private palette_listener listener;
-
+    //constructor
     public palette_fragment() {
         // Required empty public constructor
     }
@@ -35,7 +34,7 @@ private palette_listener listener;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-View view = inflater.inflate(R.layout.palette_fragment, container, false);
+        View view = inflater.inflate(R.layout.palette_fragment, container, false);
         Context context = getActivity();
         Resources res = context.getResources();
 
@@ -53,8 +52,9 @@ View view = inflater.inflate(R.layout.palette_fragment, container, false);
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String color = parent.getItemAtPosition(position).toString();
-                System.out.println("color = "+ color);
-                listener.p_listener(color);          }
+                System.out.println("color = " + color);
+                listener.p_listener(color);
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -65,7 +65,8 @@ View view = inflater.inflate(R.layout.palette_fragment, container, false);
         // Inflate the layout for this fragment
         return view;
 
-}
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -76,10 +77,11 @@ View view = inflater.inflate(R.layout.palette_fragment, container, false);
                     + " forgot to implement listener");
         }
     }
+
     @Override
-    public void onDetach(){
-super.onDetach();
-listener = null;
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 
 }
