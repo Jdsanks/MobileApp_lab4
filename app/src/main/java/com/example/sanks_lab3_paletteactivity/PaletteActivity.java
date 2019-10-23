@@ -15,7 +15,7 @@ public class PaletteActivity extends AppCompatActivity {
     public static final String EXTRA_NUMBER = "com.example.sanks_lab3_paletteactivity.EXTRA_NUMBER";
 
     ConstraintLayout layout;
-    Spinner spinner;
+    Spinner spinner; //frag
 
     //Resources res = [strings.]getResources();
     //String[] gridLabels = res.getStringArray(R.array.strings);
