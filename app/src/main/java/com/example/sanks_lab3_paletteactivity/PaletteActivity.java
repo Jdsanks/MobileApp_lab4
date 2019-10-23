@@ -2,61 +2,58 @@ package com.example.sanks_lab3_paletteactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 
-public class PaletteActivity extends AppCompatActivity {
+public class PaletteActivity extends AppCompatActivity implements palette_listener {
     public static final String EXTRA_NUMBER = "com.example.sanks_lab3_paletteactivity.EXTRA_NUMBER";
-
+    FragmentTransaction transaction;
     ConstraintLayout layout;
-    Spinner spinner; //frag
+    Spinner spinner;
+    Fragment p_fragment;
+    Fragment c_fragment;
 
-    //Resources res = [strings.]getResources();
-    //String[] gridLabels = res.getStringArray(R.array.strings);
-    //String[] color_list; //{"White","Red", "Blue", "Green", "Black", "Cyan", "Yellow", "Magenta","Gray"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] color = getResources().getStringArray(R.array.color);
-        String[] color_list_change = getResources().getStringArray(R.array.color_change);
+        p_fragment = new palette_fragment(); // create fragment
+        c_fragment = new canvas_fragment();
 
-        layout = findViewById(R.id.layout);
-        spinner = findViewById(R.id.spinner);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, p_fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
-        ColorAdapter adaptor = new ColorAdapter(PaletteActivity.this, color,color_list_change);
-        spinner.setAdapter((adaptor));
-
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
-                    System.out.println("id =" + position);
-                    open_canvas_activity(position);
-                }
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                spinner.setBackgroundColor(Color.WHITE);
-            }
-        });
     }
+    public void setColor(String c) {
+        System.out.println("color = "+c);
+    }/*
+        if(findViewById(R.id.layout) != null){
+            FragmentManager fm3 = getFragmentManager();
+            fm3.beginTransaction();
+                    transaction.replace(R.id.fragment_container, p_fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+            fm3.executePendingTransactions();
+            findViewById(R.id.fragment_container).setBackgroundColor(Color.parseColor(c));
+    }
+}*/
 
-    public void open_canvas_activity(int position) {
-        Intent intent = new Intent(this, CanvasActivity.class);
-        intent.putExtra(EXTRA_NUMBER, position);
-        startActivity(intent);
+    @Override
+    public void p_listener(String color) {
+        FrameLayout layout = findViewById(R.id.c_layout);
+        layout.setBackgroundColor(Color.parseColor(color));
     }
 }
 

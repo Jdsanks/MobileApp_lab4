@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name ="app_name">spanish activity</string>
+    <string name ="app_name">actividad española</string>
     <string-array
 
     name="color_change">
